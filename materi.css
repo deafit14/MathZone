@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2d935d; /* Konsisten dengan halaman pertama */
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.list-materi {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Desain Tombol Materi */
+.materi-card {
+  background-color: #1e603d;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.8rem;
+  border-radius: 50px; /* Bentuk lonjong sesuai gambar */
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+
+  /* Efek Bayangan */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  /* Setup Awal untuk Animasi Muncul */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Animasi Melayang saat Hover */
+.materi-card:hover {
+  background-color: #164a2f;
+  transform: translateY(-5px); /* Efek melayang ke atas */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Class yang akan dipicu oleh JavaScript */
+.materi-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+  .materi-card {
+    font-size: 1.2rem;
+    padding: 15px;
+    border-radius: 40px;
+  }
+
+  .menu-container {
+    max-width: 90%;
+  }
+}
