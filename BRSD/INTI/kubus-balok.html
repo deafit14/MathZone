@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Pembelajaran Kubus & Balok</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="kubus-balok.css" />
+  </head>
+  <body>
+    <section id="sec_intro">
+      <h1 class="reveal main-title">Eksplorasi Bangun Ruang</h1>
+      <div class="hero-container reveal">
+        <div class="shape-box">
+          <h2 class="shape-title">KUBUS</h2>
+          <div class="scene-wrapper">
+            <div class="scene">
+              <div class="cube auto-rotate">
+                <div class="face cube-face f-front"></div>
+                <div class="face cube-face f-back"></div>
+                <div class="face cube-face f-right"></div>
+                <div class="face cube-face f-left"></div>
+                <div class="face cube-face f-top"></div>
+                <div class="face cube-face f-bottom"></div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-action" onclick="scrollToId('sec_kubus_ident')">
+            PELAJARI KUBUS
+          </button>
+        </div>
+
+        <div class="shape-box">
+          <h2 class="shape-title">BALOK</h2>
+          <div class="scene-wrapper">
+            <div class="scene">
+              <div class="cube auto-rotate balok-shape">
+                <div class="face balok-face b-front"></div>
+                <div class="face balok-face b-back"></div>
+                <div class="face balok-face b-right"></div>
+                <div class="face balok-face b-left"></div>
+                <div class="face balok-face b-top"></div>
+                <div class="face balok-face b-bottom"></div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-action" onclick="scrollToId('sec_balok_ident')">
+            PELAJARI BALOK
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec_kubus_ident">
+      <h2 class="reveal section-title">Identifikasi Unsur Kubus</h2>
+      <div class="content-wrapper reveal">
+        <div class="scene-wrapper">
+          <div class="scene">
+            <div class="cube draggable" id="cube_ident">
+              <div class="face cube-face f-front"></div>
+              <div class="face cube-face f-back"></div>
+              <div class="face cube-face f-right"></div>
+              <div class="face cube-face f-left"></div>
+              <div class="face cube-face f-top"></div>
+              <div class="face cube-face f-bottom"></div>
+              <div class="dot d1"></div>
+              <div class="dot d2"></div>
+              <div class="dot d3"></div>
+              <div class="dot d4"></div>
+              <div class="dot d5"></div>
+              <div class="dot d6"></div>
+              <div class="dot d7"></div>
+              <div class="dot d8"></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="input-row">
+            <span>SISI =</span> <input type="number" id="k_sisi" />
+          </div>
+          <div class="input-row">
+            <span>RUSUK =</span> <input type="number" id="k_rusuk" />
+          </div>
+          <div class="input-row">
+            <span>TITIK SUDUT =</span> <input type="number" id="k_titik" />
+          </div>
+          <button class="btn-check" onclick="cekKubusIdent()">KOREKSI</button>
+          <div id="res_kubus_ident" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec_kubus_vol">
+      <h2 class="reveal section-title">Volume Kubus</h2>
+      <div class="content-wrapper reveal">
+        <div class="scene-wrapper">
+          <div class="scene">
+            <div class="cube draggable" id="cube_vol">
+              <div class="face cube-face f-front">
+                <span id="lbl_sisi">10</span>
+              </div>
+              <div class="face cube-face f-back"></div>
+              <div class="face cube-face f-right"></div>
+              <div class="face cube-face f-left"></div>
+              <div class="face cube-face f-top"></div>
+              <div class="face cube-face f-bottom"></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="input-row">
+            <span>Panjang Sisi (s) =</span>
+            <input
+              type="number"
+              id="val_sisi"
+              value="10"
+              oninput="updateLabelKubus()"
+            />
+          </div>
+          <div class="input-row">
+            <span>Volume =</span> <input type="number" id="ans_kubus_vol" />
+          </div>
+          <button class="btn-check" onclick="cekKubusVol()">KOREKSI</button>
+          <div id="res_kubus_vol" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec_kubus_lp">
+      <h2 class="reveal section-title">Luas Permukaan Kubus</h2>
+      <div class="scene-wrapper unfold-margin reveal">
+        <div class="scene">
+          <div class="cube draggable" id="cube_lp">
+            <div class="face cube-face f-front"></div>
+            <div class="face cube-face f-back"></div>
+            <div class="face cube-face f-right"></div>
+            <div class="face cube-face f-left"></div>
+            <div class="face cube-face f-top"></div>
+            <div class="face cube-face f-bottom"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel reveal">
+        <button class="btn-action btn-unfold" onclick="toggleBongkarKubus()">
+          BONGKAR KUBUS
+        </button>
+        <div class="input-row">
+          <span>Sisi (s) =</span>
+          <input type="number" id="val_sisi_lp" value="10" />
+        </div>
+        <div class="input-row">
+          <span>Luas Permukaan =</span>
+          <input type="number" id="ans_kubus_lp" />
+        </div>
+        <button class="btn-check" onclick="cekKubusLP()">KOREKSI</button>
+        <div id="res_kubus_lp" class="result-box"></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="sec_balok_ident">
+      <h2 class="reveal section-title">Identifikasi Unsur Balok</h2>
+      <div class="content-wrapper reveal">
+        <div class="scene-wrapper">
+          <div class="scene">
+            <div class="cube draggable balok-shape" id="balok_ident">
+              <div class="face balok-face b-front"></div>
+              <div class="face balok-face b-back"></div>
+              <div class="face balok-face b-right"></div>
+              <div class="face balok-face b-left"></div>
+              <div class="face balok-face b-top"></div>
+              <div class="face balok-face b-bottom"></div>
+              <div class="dot d1"></div>
+              <div class="dot d2"></div>
+              <div class="dot d3"></div>
+              <div class="dot d4"></div>
+              <div class="dot d5"></div>
+              <div class="dot d6"></div>
+              <div class="dot d7"></div>
+              <div class="dot d8"></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="input-row">
+            <span>SISI =</span> <input type="number" id="b_sisi" />
+          </div>
+          <div class="input-row">
+            <span>RUSUK =</span> <input type="number" id="b_rusuk" />
+          </div>
+          <div class="input-row">
+            <span>TITIK SUDUT =</span> <input type="number" id="b_titik" />
+          </div>
+          <button class="btn-check" onclick="cekBalokIdent()">KOREKSI</button>
+          <div id="res_balok_ident" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec_balok_vol">
+      <h2 class="reveal section-title">Volume Balok</h2>
+      <div class="content-wrapper reveal">
+        <div class="scene-wrapper">
+          <div class="scene">
+            <div class="cube draggable balok-shape" id="balok_vol">
+              <div class="face balok-face b-front"></div>
+              <div class="face balok-face b-back"></div>
+              <div class="face balok-face b-right"></div>
+              <div class="face balok-face b-left"></div>
+              <div class="face balok-face b-top"></div>
+              <div class="face balok-face b-bottom"></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="input-row">
+            <span>Panjang (p) =</span>
+            <input type="number" id="val_p" value="10" />
+          </div>
+          <div class="input-row">
+            <span>Lebar (l) =</span>
+            <input type="number" id="val_l" value="5" />
+          </div>
+          <div class="input-row">
+            <span>Tinggi (t) =</span>
+            <input type="number" id="val_t" value="8" />
+          </div>
+          <div class="input-row">
+            <span>Volume =</span> <input type="number" id="ans_balok_vol" />
+          </div>
+          <button class="btn-check" onclick="cekBalokVol()">KOREKSI</button>
+          <div id="res_balok_vol" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec_balok_lp">
+      <h2 class="reveal section-title">Luas Permukaan Balok</h2>
+      <div class="scene-wrapper unfold-margin reveal">
+        <div class="scene">
+          <div class="cube draggable balok-shape" id="balok_lp">
+            <div class="face balok-face b-front"></div>
+            <div class="face balok-face b-back"></div>
+            <div class="face balok-face b-right"></div>
+            <div class="face balok-face b-left"></div>
+            <div class="face balok-face b-top"></div>
+            <div class="face balok-face b-bottom"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel reveal">
+        <button
+          class="btn-action btn-unfold-balok"
+          onclick="toggleBongkarBalok()"
+        >
+          BONGKAR BALOK
+        </button>
+        <div class="input-row">
+          <span>Panjang (p) =</span>
+          <input type="number" id="lp_p" value="10" />
+        </div>
+        <div class="input-row">
+          <span>Lebar (l) =</span> <input type="number" id="lp_l" value="5" />
+        </div>
+        <div class="input-row">
+          <span>Tinggi (t) =</span> <input type="number" id="lp_t" value="8" />
+        </div>
+        <div class="input-row">
+          <span>Luas Permukaan =</span>
+          <input type="number" id="ans_balok_lp" />
+        </div>
+        <button class="btn-check" onclick="cekBalokLP()">KOREKSI</button>
+        <div id="res_balok_lp" class="result-box"></div>
+      </div>
+    </section>
+
+    <script src="kubus-balok.js"></script>
+  </body>
+</html>

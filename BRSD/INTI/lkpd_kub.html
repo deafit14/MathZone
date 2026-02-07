@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LKPD Digital: Kubus</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="lkpd_kub.css" />
+  </head>
+  <body>
+    <header>
+      <h1>LKPD DIGITAL: KUBUS</h1>
+      <p>
+        Amati visual bangun ruang di bawah ini, diskusikan dengan kelompokmu,
+        dan tulis jawaban di lembar kerja kertas.
+      </p>
+    </header>
+
+    <div class="grid-container">
+      <div class="card">
+        <div class="card-header">
+          <span class="badge">MASALAH 1</span>
+          <h3>Kerangka Kawat</h3>
+        </div>
+        <div class="visual-area">
+          <div class="scene">
+            <div class="cube wireframe draggable">
+              <div class="face w-face"></div>
+              <div class="face w-face"></div>
+              <div class="face w-face"></div>
+              <div class="face w-face"></div>
+              <div class="face w-face"></div>
+              <div class="face w-face"></div>
+            </div>
+          </div>
+        </div>
+        <div class="question-box">
+          <p>
+            Pak Budi ingin membuat <b>5 buah kerangka kubus</b> dari kawat.
+            Visual di atas adalah contoh satu kerangka dengan panjang sisi
+            <b>15 cm</b>.
+          </p>
+          <p>
+            <b>Tantangan:</b> Hitunglah berapa meter minimal kawat yang harus
+            dibeli Pak Budi!
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="badge">MASALAH 2</span>
+          <h3>Membungkus Kado</h3>
+        </div>
+        <div class="visual-area">
+          <div class="scene">
+            <div class="cube gift draggable" id="giftCube">
+              <div class="face gift-face f-front"></div>
+              <div class="face gift-face f-back"></div>
+              <div class="face gift-face f-right"></div>
+              <div class="face gift-face f-left"></div>
+              <div class="face gift-face f-top"></div>
+              <div class="face gift-face f-bottom"></div>
+            </div>
+          </div>
+          <button class="btn-action" onclick="toggleGift()">
+            CEK JARING-JARING
+          </button>
+        </div>
+        <div class="question-box">
+          <p>
+            Rina memiliki kotak kado berbentuk kubus dengan sisi <b>12 cm</b>.
+            Ia ingin melapisi seluruh permukaannya dengan kertas emas.
+          </p>
+          <p>
+            <b>Tantangan:</b> Hitunglah luas kertas emas minimal yang dibutuhkan
+            Rina!
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="badge">MASALAH 3</span>
+          <h3>Volume Penampungan Air</h3>
+        </div>
+        <div class="visual-area">
+          <div class="scene">
+            <div class="cube draggable">
+              <div class="face water-face f-front"></div>
+              <div class="face water-face f-back"></div>
+              <div class="face water-face f-right"></div>
+              <div class="face water-face f-left"></div>
+              <div class="face water-face f-top"></div>
+              <div class="face water-face f-bottom"></div>
+            </div>
+          </div>
+        </div>
+        <div class="question-box">
+          <p>
+            Sebuah bak penampungan air berbentuk kubus memiliki panjang rusuk
+            bagian dalam <b>3 meter</b>. Bak tersebut diisi air hingga penuh.
+          </p>
+          <p>
+            <b>Tantangan:</b> Berapa <b>liter</b> volume air yang ada di dalam
+            bak tersebut?
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="lkpd_kub.js"></script>
+  </body>
+</html>

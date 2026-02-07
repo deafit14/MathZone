@@ -1,0 +1,252 @@
+:root {
+  --bg-color: #2d935d;
+  --card-bg: #ffffff;
+  --text-color: #333;
+  --dark-green: #1e603d;
+  --size: 120px;
+  --half: 60px;
+  --water-blue: rgba(52, 152, 219, 0.8); /* Warna Kubus Air */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+header p {
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* GRID LAYOUT */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px; /* Diperlebar sedikit biar muat 3 kolom di layar besar */
+  margin: 0 auto;
+}
+
+/* KARTU */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.badge {
+  background: var(--bg-color);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.card-header h3 {
+  font-size: 1.1rem;
+  color: var(--dark-green);
+}
+
+.visual-area {
+  background: #f4f4f4;
+  border-radius: 15px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.question-box {
+  background: #e8f5e9;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border-left: 5px solid var(--bg-color);
+}
+
+/* 3D SCENE */
+.scene {
+  width: var(--size);
+  height: var(--size);
+  perspective: 1000px;
+}
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(30deg);
+  cursor: grab;
+  transition: transform 0.8s ease;
+}
+.cube:active {
+  cursor: grabbing;
+}
+
+/* MASALAH 1: WIREFRAME */
+.wireframe .w-face {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border: 4px solid #333;
+  background: transparent;
+}
+.w-face:nth-child(1) {
+  transform: translateZ(var(--half));
+}
+.w-face:nth-child(2) {
+  transform: rotateY(180deg) translateZ(var(--half));
+}
+.w-face:nth-child(3) {
+  transform: rotateY(90deg) translateZ(var(--half));
+}
+.w-face:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(var(--half));
+}
+.w-face:nth-child(5) {
+  transform: rotateX(90deg) translateZ(var(--half));
+}
+.w-face:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(var(--half));
+}
+
+/* MASALAH 2: GIFT KADO */
+.gift .gift-face {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: gold;
+  border: 1px solid #d4af37;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gift-face::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  background: red;
+  opacity: 0.8;
+}
+.gift-face::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  background: red;
+  opacity: 0.8;
+}
+
+.f-front {
+  transform: translateZ(var(--half));
+}
+.f-back {
+  transform: rotateY(180deg) translateZ(var(--half));
+}
+.f-right {
+  transform: rotateY(90deg) translateZ(var(--half));
+}
+.f-left {
+  transform: rotateY(-90deg) translateZ(var(--half));
+}
+.f-top {
+  transform: rotateX(90deg) translateZ(var(--half));
+}
+.f-bottom {
+  transform: rotateX(-90deg) translateZ(var(--half));
+}
+
+/* MASALAH 3: WATER CUBE (BARU) */
+.water-face {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: var(--water-blue);
+  border: 1px solid #2980b9;
+  opacity: 0.7; /* Transparan agar terlihat seperti air */
+}
+
+/* LOGIKA UNFOLD */
+.gift.unfold {
+  transform: rotateX(0deg) rotateY(0deg) !important;
+}
+.gift.unfold .f-front {
+  transform: translateZ(0);
+}
+.gift.unfold .f-left {
+  transform: translateX(calc(var(--size) * -1));
+}
+.gift.unfold .f-right {
+  transform: translateX(var(--size));
+}
+.gift.unfold .f-back {
+  transform: translateX(calc(var(--size) * 2));
+}
+.gift.unfold .f-top {
+  transform: translateY(calc(var(--size) * -1));
+}
+.gift.unfold .f-bottom {
+  transform: translateY(var(--size));
+}
+.gift-face {
+  transition: all 0.8s ease;
+}
+
+.btn-action {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: var(--bg-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.btn-action:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}

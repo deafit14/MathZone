@@ -1,0 +1,431 @@
+:root {
+  --bg-color: #2d935d;
+  --dark-green: #1e603d;
+  --white: #ffffff;
+  --pink: #ff99cc;
+  --orange: #ff9933;
+  --black: #000000;
+  --size: 150px;
+  --half: 75px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+section {
+  min-height: 90vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.divider {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 80%;
+  margin: 20px auto;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.shape-title {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.hero-container,
+.content-wrapper {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.shape-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scene-wrapper {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Margin agar jaring-jaring tidak menabrak teks */
+.unfold-margin {
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.scene {
+  width: var(--size);
+  height: var(--size);
+  perspective: 1200px;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(30deg);
+  transition: transform 0.8s ease-in-out;
+}
+
+.auto-rotate {
+  animation: putar 15s infinite linear;
+}
+@keyframes putar {
+  from {
+    transform: rotateX(-20deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-20deg) rotateY(360deg);
+  }
+}
+
+.face {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border: 2px solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.95;
+  transition: all 0.8s ease-in-out;
+  font-weight: bold;
+  color: black;
+}
+
+/* KUBUS FACES */
+.cube-face {
+  background: var(--pink);
+}
+.f-front {
+  transform: rotateY(0deg) translateZ(var(--half));
+}
+.f-back {
+  transform: rotateY(180deg) translateZ(var(--half));
+}
+.f-right {
+  transform: rotateY(90deg) translateZ(var(--half));
+}
+.f-left {
+  transform: rotateY(-90deg) translateZ(var(--half));
+}
+.f-top {
+  transform: rotateX(90deg) translateZ(var(--half));
+}
+.f-bottom {
+  transform: rotateX(-90deg) translateZ(var(--half));
+}
+
+/* BALOK FACES (Ukuran 200x100x100) */
+.balok-shape {
+  width: 200px;
+  height: 100px;
+  left: -25px;
+}
+.balok-face {
+  background: var(--orange);
+  border: 2px solid #cc6600;
+}
+
+.b-front {
+  width: 200px;
+  height: 100px;
+  transform: translateZ(50px);
+}
+.b-back {
+  width: 200px;
+  height: 100px;
+  transform: rotateY(180deg) translateZ(50px);
+}
+.b-right {
+  width: 100px;
+  height: 100px;
+  transform: rotateY(90deg) translateZ(150px);
+}
+.b-left {
+  width: 100px;
+  height: 100px;
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.b-top {
+  width: 200px;
+  height: 100px;
+  transform: rotateX(90deg) translateZ(50px);
+}
+.b-bottom {
+  width: 200px;
+  height: 100px;
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+/* DOTS */
+.dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 1px solid gray;
+  border-radius: 50%;
+  z-index: 10;
+}
+/* Dot Kubus */
+.cube-face ~ .d1 {
+  top: -6px;
+  left: -6px;
+  transform: translateZ(var(--half));
+}
+.cube-face ~ .d2 {
+  top: -6px;
+  right: -6px;
+  transform: translateZ(var(--half));
+}
+.cube-face ~ .d3 {
+  bottom: -6px;
+  left: -6px;
+  transform: translateZ(var(--half));
+}
+.cube-face ~ .d4 {
+  bottom: -6px;
+  right: -6px;
+  transform: translateZ(var(--half));
+}
+.cube-face ~ .d5 {
+  top: -6px;
+  left: -6px;
+  transform: translateZ(calc(var(--half) * -1));
+}
+.cube-face ~ .d6 {
+  top: -6px;
+  right: -6px;
+  transform: translateZ(calc(var(--half) * -1));
+}
+.cube-face ~ .d7 {
+  bottom: -6px;
+  left: -6px;
+  transform: translateZ(calc(var(--half) * -1));
+}
+.cube-face ~ .d8 {
+  bottom: -6px;
+  right: -6px;
+  transform: translateZ(calc(var(--half) * -1));
+}
+/* Dot Balok */
+.balok-face ~ .d1 {
+  top: -6px;
+  left: -6px;
+  transform: translateZ(50px);
+}
+.balok-face ~ .d2 {
+  top: -6px;
+  right: -6px;
+  transform: translateZ(50px);
+}
+.balok-face ~ .d3 {
+  bottom: -6px;
+  left: -6px;
+  transform: translateZ(50px);
+}
+.balok-face ~ .d4 {
+  bottom: -6px;
+  right: -6px;
+  transform: translateZ(50px);
+}
+.balok-face ~ .d5 {
+  top: -6px;
+  left: -6px;
+  transform: translateZ(-50px);
+}
+.balok-face ~ .d6 {
+  top: -6px;
+  right: -6px;
+  transform: translateZ(-50px);
+}
+.balok-face ~ .d7 {
+  bottom: -6px;
+  left: -6px;
+  transform: translateZ(-50px);
+}
+.balok-face ~ .d8 {
+  bottom: -6px;
+  right: -6px;
+  transform: translateZ(-50px);
+}
+
+/* JARING-JARING KUBUS */
+.cube.unfold {
+  transform: rotateX(0deg) rotateY(0deg) !important;
+}
+.cube.unfold .f-front {
+  transform: translateZ(0);
+}
+.cube.unfold .f-left {
+  transform: translateX(calc(var(--size) * -1));
+}
+.cube.unfold .f-right {
+  transform: translateX(var(--size));
+}
+.cube.unfold .f-back {
+  transform: translateX(calc(var(--size) * 2));
+}
+.cube.unfold .f-top {
+  transform: translateY(calc(var(--size) * -1));
+}
+.cube.unfold .f-bottom {
+  transform: translateY(var(--size));
+}
+
+/* JARING-JARING BALOK (Ukuran Berbeda) */
+.balok-shape.unfold {
+  transform: rotateX(0deg) rotateY(0deg) !important;
+}
+.balok-shape.unfold .b-front {
+  transform: translateZ(0);
+}
+/* Geser Kiri (Lebar 100) */
+.balok-shape.unfold .b-left {
+  transform: translateX(-100px);
+}
+/* Geser Kanan (Lebar 100) */
+.balok-shape.unfold .b-right {
+  transform: translateX(200px);
+}
+/* Geser Belakang (Lebar 200, Posisi setelah Kanan) -> 200 (Front) + 100 (Right) = 300 */
+.balok-shape.unfold .b-back {
+  transform: translateX(300px);
+}
+/* Geser Atas (Tinggi 100) */
+.balok-shape.unfold .b-top {
+  transform: translateY(-100px);
+}
+/* Geser Bawah (Tinggi 100) */
+.balok-shape.unfold .b-bottom {
+  transform: translateY(100px);
+}
+
+/* PANEL */
+.panel {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 25px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+}
+.input-row {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 100px;
+  text-align: center;
+}
+.btn-action,
+.btn-check {
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: none;
+  background: var(--dark-green);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 5px;
+}
+.btn-unfold,
+.btn-unfold-balok {
+  width: 100%;
+  margin-bottom: 20px;
+  background: #c0392b;
+}
+.result-box {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: none;
+  line-height: 1.6;
+  border-left: 4px solid white;
+}
+
+/* ANIMASI & RESPONSIVE */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --size: 110px;
+    --half: 55px;
+  }
+  .hero-container,
+  .content-wrapper {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .balok-shape {
+    transform: scale(0.7);
+    left: 0;
+  }
+  .unfold-margin {
+    margin-top: 120px;
+    margin-bottom: 140px;
+  }
+
+  /* Responsive Jaring Kubus */
+  .cube.unfold .f-left {
+    transform: translateX(-110px);
+  }
+  .cube.unfold .f-right {
+    transform: translateX(110px);
+  }
+  .cube.unfold .f-back {
+    transform: translateX(220px);
+  }
+  .cube.unfold .f-top {
+    transform: translateY(-110px);
+  }
+  .cube.unfold .f-bottom {
+    transform: translateY(110px);
+  }
+}
