@@ -1,0 +1,248 @@
+:root {
+  --bg-color: #2d935d;
+  --card-bg: #ffffff;
+  --text-color: #333;
+  --dark-green: #1e603d;
+
+  /* Warna Masalah 2 */
+  --color-front: #ff6b6b; /* Merah/Pink */
+  --color-side: #4ecdc4; /* Hijau Tosca */
+  --color-top: #ffe66d; /* Kuning */
+
+  /* Warna Kolam */
+  --pool-water: rgba(52, 152, 219, 0.6);
+  --pool-border: #000000;
+
+  --size-p: 200px; /* Panjang Visual */
+  --size-l: 100px; /* Lebar Visual */
+  --size-t: 100px; /* Tinggi Visual */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+header p {
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* GRID LAYOUT */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* KARTU SOAL */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+.badge {
+  background: var(--bg-color);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.card-header h3 {
+  font-size: 1.1rem;
+  color: var(--dark-green);
+}
+
+.visual-area {
+  background: #f4f4f4;
+  border-radius: 15px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.question-box {
+  background: #e8f5e9;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border-left: 5px solid var(--bg-color);
+}
+
+/* 3D SCENE & CUBE BASIC */
+.scene {
+  width: var(--size-p);
+  height: var(--size-t);
+  perspective: 1000px;
+}
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(30deg);
+  cursor: grab;
+}
+.cube:active {
+  cursor: grabbing;
+}
+
+.face {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+}
+
+/* POSISI SISI BALOK (Visual P=200, L=100, T=100) */
+/* Depan & Belakang */
+.f-front,
+.f-back {
+  width: var(--size-p);
+  height: var(--size-t);
+}
+.f-front {
+  transform: translateZ(50px);
+} /* 100/2 */
+.f-back {
+  transform: rotateY(180deg) translateZ(50px);
+}
+
+/* Kanan & Kiri */
+.f-right,
+.f-left {
+  width: var(--size-l);
+  height: var(--size-t);
+  left: 50px;
+} /* Centering */
+.f-right {
+  transform: rotateY(90deg) translateZ(100px);
+} /* 200/2 */
+.f-left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+/* Atas & Bawah */
+.f-top,
+.f-bottom {
+  width: var(--size-p);
+  height: var(--size-l);
+}
+.f-top {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.f-bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+/* --- GAYA KHUSUS MASALAH 1 & 3: KOLAM RENANG (POOL) --- */
+.pool .p-face {
+  background: var(--pool-water);
+  border: 3px solid var(--pool-border); /* Rusuk Hitam Tebal */
+}
+
+/* --- GAYA KHUSUS MASALAH 2: WARNA WARNI (COLORFUL) --- */
+.colorful .face {
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+.colorful .f-front,
+.colorful .f-back {
+  background: var(--color-front);
+} /* Merah */
+.colorful .f-right,
+.colorful .f-left {
+  background: var(--color-side);
+} /* Hijau */
+.colorful .f-top,
+.colorful .f-bottom {
+  background: var(--color-top);
+} /* Kuning */
+
+/* --- LABEL ANGKA DI RUSUK --- */
+.lbl {
+  position: absolute;
+  background: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #000;
+  pointer-events: none; /* Agar tidak mengganggu drag */
+}
+
+/* Label Panjang (Bawah Depan) */
+.length {
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(50px);
+}
+
+/* Label Lebar (Samping Kanan Bawah) */
+.width {
+  bottom: -12px;
+  right: -20px;
+  transform: rotateY(90deg) translateZ(0px); /* Sisi samping */
+}
+
+/* Label Tinggi (Depan Kiri) */
+.height {
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%) translateZ(50px);
+}
+
+/* Label Tanya (?) */
+.q-mark {
+  background: #ffd700;
+  color: #d35400;
+  font-size: 1rem;
+  border: 2px solid #d35400;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}

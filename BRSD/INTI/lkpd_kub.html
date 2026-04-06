@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LKPD Interaktif: Proyek Dadu Raksasa</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="lkpd_kub.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Misi Pembuatan Dadu Raksasa</h1>
+      <p>
+        Baca skenario di bawah ini, amati visual 3D-nya, dan selesaikan
+        tantangannya di Lembar Kerja (kertas) milikmu!
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="visual-section">
+        <div class="scenario-box">
+          <h3>Skenario Proyek</h3>
+          <p>
+            Sebuah taman bermain memesan
+            <strong>4 buah dadu raksasa</strong> berbentuk kubus sempurna.
+            Setiap dadu memiliki panjang rusuk (s) sebesar
+            <strong>50 cm</strong>.
+          </p>
+          <p>
+            Sebagai Kepala Teknisi, kamu ditugaskan merancang kebutuhan material
+            mulai dari <strong>perakitan kerangka</strong>,
+            <strong>pengisian busa di bagian dalam</strong>, hingga
+            <strong>pelapisan kulit luar</strong>.
+          </p>
+          <div class="alert-box">
+            ⚠️ <strong>INSTRUKSI:</strong> Putar atau bongkar model dadu di
+            bawah ini untuk membantumu membayangkan bentuk aslinya!
+          </div>
+        </div>
+
+        <button class="btn-action" onclick="toggleBongkarDadu()">
+          BONGKAR DADU
+        </button>
+
+        <div class="scene-wrapper">
+          <div class="scene">
+            <div class="cube draggable" id="dadu">
+              <div class="face f-front face-1">
+                <div class="dice-dot"></div>
+              </div>
+              <div class="face f-back face-6">
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+              </div>
+
+              <div class="face f-top face-2">
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+              </div>
+              <div class="face f-bottom face-5">
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+              </div>
+
+              <div class="face f-right face-3">
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+              </div>
+              <div class="face f-left face-4">
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+                <div class="dice-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="challenges-section">
+        <div class="card">
+          <div class="card-header">
+            Tantangan 1: Identifikasi Komponen (Tahap Perakitan)
+          </div>
+          <div class="card-body">
+            <p>Untuk membuat kerangka dasar 1 buah dadu, kita membutuhkan:</p>
+            <ul>
+              <li>
+                <strong>Papan Kayu</strong> untuk menutup seluruh bagian
+                luarnya. (Identik dengan unsur apa?)
+              </li>
+              <li>
+                <strong>Pipa Aluminium</strong> untuk membentuk kerangka
+                garisnya. (Identik dengan unsur apa?)
+              </li>
+              <li>
+                <strong>Konektor Karet</strong> untuk menutupi setiap pojokan
+                yang tajam. (Identik dengan unsur apa?)
+              </li>
+            </ul>
+            <p>
+              <strong>Tugasmu:</strong> Hitung berapa lembar papan, batang pipa,
+              dan konektor yang dibutuhkan untuk 1 dadu!
+            </p>
+            <button class="btn-hint" onclick="toggleHint('hint1')">
+              💡 Lihat Petunjuk
+            </button>
+            <div id="hint1" class="hint-content">
+              Petunjuk: Ingat kembali jumlah sisi, rusuk, dan titik sudut pada
+              kubus!
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            Tantangan 2: Kebutuhan Busa (Tahap Pengisian)
+          </div>
+          <div class="card-body">
+            <p>
+              Agar dadu padat dan tidak mudah penyok, bagian
+              <strong>dalamnya</strong> akan diisi penuh dengan cairan busa
+              spons.
+            </p>
+            <p>
+              <strong>Tugasmu:</strong> Jika panjang rusuknya 50 cm, hitunglah
+              berapa cm³ busa yang dibutuhkan untuk mengisi penuh 1 dadu!
+            </p>
+            <button class="btn-hint" onclick="toggleHint('hint2')">
+              💡 Lihat Petunjuk
+            </button>
+            <div id="hint2" class="hint-content">
+              Petunjuk: Karena mengisi "ruang" bagian dalam, gunakan rumus
+              Volume Kubus (Volume = Luas Alas × Tinggi).
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            Tantangan 3: Kain Pelapis (Tahap Pelapisan)
+          </div>
+          <div class="card-body">
+            <p>
+              Seluruh <strong>permukaan luar</strong> dadu akan dibungkus rapat
+              dengan kain kulit sintetis agar aman dimainkan.
+            </p>
+            <p>
+              <strong>Tugasmu:</strong> Hitunglah berapa cm² kain yang
+              dibutuhkan untuk menyelimuti 1 buah dadu!
+            </p>
+            <button class="btn-hint" onclick="toggleHint('hint3')">
+              💡 Lihat Petunjuk
+            </button>
+            <div id="hint3" class="hint-content">
+              Petunjuk: Coba klik tombol <b>BONGKAR DADU</b>. Kamu akan melihat
+              bahwa kulit luar dadu terdiri dari 6 buah persegi.
+            </div>
+          </div>
+        </div>
+
+        <div class="card final-card">
+          <div class="card-header">
+            Tantangan 4: Evaluasi Akhir (Rekapitulasi)
+          </div>
+          <div class="card-body">
+            <p>
+              Taman bermain memesan
+              <strong>4 BUAH DADU RAKSASA</strong> sekaligus.
+            </p>
+            <p>
+              <strong>Tugasmu:</strong> Gunakan jawaban dari Tantangan 1, 2, dan
+              3 untuk menghitung TOTAL bahan baku yang harus dibeli pabrik untuk
+              membuat 4 dadu tersebut. Tuliskan rincian lengkapnya (Diketahui,
+              Ditanya, Jawab) di kertas LKPD-mu!
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="lkpd_kub.js"></script>
+  </body>
+</html>
