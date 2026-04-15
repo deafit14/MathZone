@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LKPD Interaktif: Proyek Kemasan UMKM</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="lkpd_bal.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Misi Desain Kemasan Lumpia Semarang</h1>
+      <p>
+        Baca skenario dari UMKM lokal di bawah ini, amati visual 3D-nya, dan
+        selesaikan tantangannya di Lembar Kerja (kertas) milikmu!
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="visual-section">
+        <div class="scenario-box">
+          <h3>Skenario Proyek Bisnis</h3>
+          <p>
+            Sebuah UMKM legendaris <strong>Lumpia Khas Semarang</strong> ingin
+            memperbarui desain kardus kemasannya.
+          </p>
+          <div class="alert-box">
+            ⚠️ <strong>INSTRUKSI:</strong> Putar prototipe balok 3D di bawah
+            ini. Perhatikan warna garisnya (Merah = Panjang, Biru = Lebar, Hijau
+            = Tinggi).
+          </div>
+        </div>
+
+        <button class="btn-action" onclick="toggleBongkarBalok()">
+          BONGKAR KARDUS
+        </button>
+
+        <div class="scene-wrapper">
+          <div class="scene">
+            <div class="balok draggable" id="kardus">
+              <div class="face f-front">
+                <span class="label-p" id="lbl_p">20 cm</span>
+                <span class="label-t" id="lbl_t">5 cm</span>
+              </div>
+              <div class="face f-back"></div>
+
+              <div class="face f-right">
+                <span class="label-l" id="lbl_l">10 cm</span>
+              </div>
+              <div class="face f-left"></div>
+
+              <div class="face f-top"></div>
+              <div class="face f-bottom"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="challenges-section">
+        <div class="card">
+          <div class="card-header">Tahap Input Ukuran</div>
+          <div class="card-body">
+            <p>
+              Masukkan ukuran desain kardus yang ingin kamu buat. Visual 3D di
+              samping akan mengikuti angka yang kamu ketik!
+            </p>
+            <div class="input-group">
+              <label
+                >Panjang (p):
+                <input
+                  type="number"
+                  id="val_p"
+                  value="20"
+                  oninput="updateLabelBalok()"
+              /></label>
+              <label
+                >Lebar (l):
+                <input
+                  type="number"
+                  id="val_l"
+                  value="10"
+                  oninput="updateLabelBalok()"
+              /></label>
+              <label
+                >Tinggi (t):
+                <input
+                  type="number"
+                  id="val_t"
+                  value="5"
+                  oninput="updateLabelBalok()"
+              /></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            Tantangan 1: Identifikasi Pola (Tahap Pemotongan)
+          </div>
+          <div class="card-body">
+            <p>
+              Pabrik perlu mengetahui komponen dasar kardus. Kardus ini
+              memiliki:
+            </p>
+            <ul>
+              <li>
+                <strong>Bidang Datar</strong> tempat logo dicetak. (Dalam balok
+                disebut apa?)
+              </li>
+              <li>
+                <strong>Garis Lipatan</strong> agar karton bisa ditekuk. (Dalam
+                balok disebut apa?)
+              </li>
+              <li>
+                <strong>Pojokan Lancip</strong> yang harus diamankan. (Dalam
+                balok disebut apa?)
+              </li>
+            </ul>
+            <p>
+              <strong>Tugasmu:</strong> Tentukan jumlah bidang datar, garis
+              lipatan, dan pojokan pada satu kardus utuh!
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">Tantangan 2: Kapasitas Isi (Volume)</div>
+          <div class="card-body">
+            <p>
+              Kardus tidak boleh terlalu sempit agar kulit lumpia yang renyah
+              tidak hancur tertekan.
+            </p>
+            <p>
+              <strong>Tugasmu:</strong> Hitunglah berapa
+              <strong>cm³</strong> ruang kosong (Volume) di dalam kardus
+              tersebut berdasarkan ukuran yang kamu inputkan di atas!
+            </p>
+            <button class="btn-hint" onclick="toggleHint('hint2')">
+              💡 Petunjuk Rumus
+            </button>
+            <div id="hint2" class="hint-content">V = p × l × t</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            Tantangan 3: Biaya Cetak (Luas Permukaan)
+          </div>
+          <div class="card-body">
+            <p>
+              Pabrik menghitung biaya berdasarkan luas total lembaran karton
+              yang digunakan (sebelum dilipat).
+            </p>
+            <p>
+              <strong>Tugasmu:</strong> Hitunglah berapa
+              <strong>cm²</strong> luas karton yang dibutuhkan untuk membuat 1
+              buah kardus lumpia!
+            </p>
+            <button class="btn-hint" onclick="toggleHint('hint3')">
+              💡 Petunjuk Rumus
+            </button>
+            <div id="hint3" class="hint-content">
+              Klik tombol <b>BONGKAR KARDUS</b> untuk melihat bentuk datar.
+              Rumusnya: LP = 2 × ((p×l) + (p×t) + (l×t)).
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="lkpd_bal.js"></script>
+  </body>
+</html>
