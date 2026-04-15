@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulasi Perakitan Tandon Air - Zona Matematika</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="visual_panel.css" />
+  </head>
+  <body>
+    <div class="container">
+      <a href="lkpd_kub.html" class="back-link">⬅ Kembali ke LKPD</a>
+
+      <div class="header-title">
+        <h1>Simulasi 3D: Puzzle Tandon</h1>
+        <p>
+          Tentukan panjang rusuk, lalu seret panel dari stok ke kerangka tandon
+          untuk merakitnya!
+        </p>
+      </div>
+
+      <div class="input-card">
+        <label for="rusuk-input">Tentukan Panjang Rusuk (m):</label>
+        <div class="input-group">
+          <input type="number" id="rusuk-input" min="1" max="10" value="2" />
+          <button id="btn-buat-kerangka">Buat Kerangka</button>
+        </div>
+        <p class="info-text">
+          Dibutuhkan: <strong id="total-panel-dibutuhkan">24</strong> panel
+          berukuran 1x1 meter.
+        </p>
+      </div>
+
+      <div class="scene-container" id="drop-zone">
+        <p class="drag-hint">Putar kerangka dengan menggeser area ini</p>
+        <div class="scene">
+          <div class="cube" id="tandon">
+            <div class="face front" data-id="front"></div>
+            <div class="face back" data-id="back"></div>
+            <div class="face right" data-id="right"></div>
+            <div class="face left" data-id="left"></div>
+            <div class="face top" data-id="top"></div>
+            <div class="face bottom" data-id="bottom"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stock-card">
+        <h3>
+          Stok Panel Sisi (<span id="panel-terpasang">0</span>/6 Terpasang)
+        </h3>
+        <p class="hint-text">
+          Seret (Drag) kotak di bawah ini ke area kerangka di atas!
+        </p>
+
+        <div class="panel-stock-area">
+          <div class="draggable-panel" id="source-panel">
+            <div class="panel-visual">Tarik Saya!</div>
+          </div>
+        </div>
+
+        <button id="btn-reset" class="reset-btn">Bongkar Ulang</button>
+      </div>
+
+      <div id="success-message" class="success-alert hidden">
+        <strong>🎉 Hebat!</strong> Tandon air berhasil tertutup rapat.
+      </div>
+    </div>
+
+    <script src="visual_panel.js"></script>
+  </body>
+</html>
