@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eksplorasi Balok - Zona Matematika</title>
+    <link rel="stylesheet" href="balok-kubus.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container text-center">
+        <h1>ZONA MATEMATIKA</h1>
+        <p class="subtitle">
+          Media Pembelajaran Interaktif Bangun Ruang Sisi Datar
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card section-container">
+        <div class="section-header">
+          <h2>1. Identifikasi Unsur Balok</h2>
+          <p>
+            Balok mirip dengan kubus, tetapi ia memiliki sisi-sisi "saudara
+            kembar" yang berhadapan. Mari kita buktikan!
+          </p>
+        </div>
+
+        <div class="canvas-wrapper">
+          <div id="unsur-canvas" class="canvas-3d"></div>
+          <button id="btn-animasi" class="btn-action">
+            Buka Jaring-jaring
+          </button>
+        </div>
+
+        <div class="interactive-legend">
+          <button class="legend-item" id="btn-sisi">
+            <span class="dot icon-sisi"></span> SISI
+          </button>
+          <button class="legend-item" id="btn-rusuk">
+            <span class="dot icon-rusuk"></span> RUSUK
+          </button>
+          <button class="legend-item" id="btn-titik">
+            <span class="dot icon-titik"></span> TITIK SUDUT
+          </button>
+        </div>
+
+        <div id="dynamic-explanation" class="theory-box">
+          <h3 id="exp-title">Pilih Unsur Balok</h3>
+          <p id="exp-desc">
+            Pilih tombol di atas untuk melihat letak unsur balok.
+          </p>
+        </div>
+
+        <div class="quiz-panel">
+          <h3>Kuis Pemahaman Unsur</h3>
+          <p style="text-align: center; font-size: 0.9rem">
+            (Apakah jumlahnya berbeda dengan kubus? Coba tebak!)
+          </p>
+          <div class="input-row">
+            <div class="input-group">
+              <label>Jumlah Sisi</label>
+              <input type="number" id="kuis-sisi" placeholder="0" />
+            </div>
+            <div class="input-group">
+              <label>Jumlah Rusuk</label>
+              <input type="number" id="kuis-rusuk" placeholder="0" />
+            </div>
+            <div class="input-group">
+              <label>Titik Sudut</label>
+              <input type="number" id="kuis-titik" placeholder="0" />
+            </div>
+          </div>
+          <button id="btn-kuis" class="btn-action btn-full">
+            Cek Pemahaman
+          </button>
+          <div id="kuis-feedback" class="feedback-msg hidden"></div>
+        </div>
+      </section>
+
+      <section class="card section-container volume-section">
+        <div class="section-header">
+          <h2>2. Konsep Volume Balok</h2>
+          <p>
+            Mari kita isi balok ini dengan kardus satuan berdasarkan Panjang
+            (p), Lebar (l), dan Tinggi (t).
+          </p>
+        </div>
+
+        <div class="canvas-wrapper">
+          <div id="volume-canvas" class="canvas-3d"></div>
+          <div class="controls-overlay multi-slider">
+            <div class="slider-group">
+              <label>p: <span id="val-p">4</span></label
+              ><input type="range" id="sl-p" min="1" max="6" value="4" />
+            </div>
+            <div class="slider-group">
+              <label>l: <span id="val-l">2</span></label
+              ><input type="range" id="sl-l" min="1" max="6" value="2" />
+            </div>
+            <div class="slider-group">
+              <label>t: <span id="val-t">3</span></label
+              ><input type="range" id="sl-t" min="1" max="6" value="3" />
+            </div>
+          </div>
+        </div>
+
+        <div class="action-grid">
+          <button id="btn-vol-lantai" class="btn-secondary">
+            1. Susun Lantai Dasar
+          </button>
+          <button id="btn-vol-penuh" class="btn-secondary">
+            2. Tumpuk Penuh
+          </button>
+          <button id="btn-vol-reset" class="btn-danger">Kosongkan</button>
+        </div>
+
+        <div class="theory-box math-panel">
+          <h3>Analisis Perhitungan Volume:</h3>
+          <div id="volume-math-text">
+            Atur slider p, l, t lalu klik tombol untuk melihat proses pengisian
+            kardus.
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-container lp-section">
+        <div class="section-header">
+          <h2>3. Konsep Luas Permukaan Balok</h2>
+          <p>
+            Ingat konsep 3 pasang "saudara kembar" di bahan ajarmu? Mari kita
+            buktikan dengan jaring-jaring ini!
+          </p>
+        </div>
+
+        <div class="canvas-wrapper">
+          <div id="lp-canvas" class="canvas-3d"></div>
+          <div class="controls-overlay multi-slider">
+            <div class="slider-group">
+              <label>p: <span id="val-lp-p">4</span></label
+              ><input type="range" id="sl-lp-p" min="1" max="6" value="4" />
+            </div>
+            <div class="slider-group">
+              <label>l: <span id="val-lp-l">2</span></label
+              ><input type="range" id="sl-lp-l" min="1" max="6" value="2" />
+            </div>
+            <div class="slider-group">
+              <label>t: <span id="val-lp-t">3</span></label
+              ><input type="range" id="sl-lp-t" min="1" max="6" value="3" />
+            </div>
+          </div>
+          <button id="btn-animasi-lp" class="btn-action">
+            Buka Jaring-jaring
+          </button>
+        </div>
+
+        <div class="theory-box math-panel">
+          <h3>Analisis Perhitungan Luas Permukaan:</h3>
+          <div id="lp-math-text">
+            <p>Geser ukuran p, l, t di atas untuk melihat perubahannya.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-container practice-section">
+        <div class="section-header">
+          <h2>4. Latihan Mandiri</h2>
+          <p>
+            Tentukan sendiri ukuran baloknya dan hitung jawabannya sesuai rumus!
+          </p>
+        </div>
+
+        <div class="practice-form">
+          <div class="input-row" style="margin-bottom: 20px">
+            <div class="input-group">
+              <label>Panjang (p)</label
+              ><input type="number" id="lat-p" value="5" />
+            </div>
+            <div class="input-group">
+              <label>Lebar (l)</label
+              ><input type="number" id="lat-l" value="3" />
+            </div>
+            <div class="input-group">
+              <label>Tinggi (t)</label
+              ><input type="number" id="lat-t" value="4" />
+            </div>
+          </div>
+
+          <div class="input-group wide">
+            <label>Berapa Volume baloknya?</label>
+            <input type="number" id="lat-v" placeholder="Jawaban Volume" />
+          </div>
+          <div class="input-group wide">
+            <label>Berapa Luas Permukaannya?</label>
+            <input
+              type="number"
+              id="lat-lp"
+              placeholder="Jawaban Luas Permukaan"
+            />
+          </div>
+          <button id="btn-latihan" class="btn-action btn-full">
+            Cek Langkah Penyelesaian
+          </button>
+        </div>
+
+        <div id="latihan-feedback" class="feedback-msg hidden">
+          <div id="latihan-status" class="status-banner"></div>
+          <div class="step-by-step">
+            <h4>Pembahasan Runtut:</h4>
+            <p>
+              <strong>Diketahui:</strong><br />Panjang (p) =
+              <span id="ans-p">-</span>, Lebar (l) = <span id="ans-l">-</span>,
+              Tinggi (t) = <span id="ans-t">-</span>
+            </p>
+            <p>
+              <strong>Ditanya:</strong><br />Volume (V) dan Luas Permukaan (LP)?
+            </p>
+            <p>
+              <strong>Jawab (Volume):</strong><br />
+              V = p &times; l &times; t <br />
+              V = <span id="ans-p1">-</span> &times;
+              <span id="ans-l1">-</span> &times; <span id="ans-t1">-</span> =
+              <strong><span id="ans-v">-</span></strong>
+            </p>
+            <p>
+              <strong>Jawab (Luas Permukaan):</strong><br />
+              LP = 2 &times; ( (p&times;l) + (p&times;t) + (l&times;t) ) <br />
+              LP = 2 &times; ( (<span id="ans-p2">-</span>&times;<span
+                id="ans-l2"
+                >-</span
+              >) + (<span id="ans-p3">-</span>&times;<span id="ans-t2">-</span>)
+              + (<span id="ans-l3">-</span>&times;<span id="ans-t3">-</span>) )
+              <br />
+              LP = 2 &times; ( <span id="ans-pl">-</span> +
+              <span id="ans-pt">-</span> + <span id="ans-lt">-</span> ) <br />
+              LP = 2 &times; <span id="ans-sum">-</span> =
+              <strong><span id="ans-lp">-</span></strong>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Pendidikan Matematika UNNES - Deafit Ridho Nugroho</p>
+    </footer>
+
+    <script src="balok-kubus.js"></script>
+  </body>
+</html>

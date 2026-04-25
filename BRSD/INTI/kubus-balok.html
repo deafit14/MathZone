@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eksplorasi Kubus - Zona Matematika</title>
+    <link rel="stylesheet" href="kubus-balok.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container text-center">
+        <h1>ZONA MATEMATIKA</h1>
+        <p class="subtitle">
+          Media Pembelajaran Interaktif Bangun Ruang Sisi Datar
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card section-container">
+        <div class="section-header">
+          <h2>1. Identifikasi Unsur Kubus</h2>
+          <p>
+            Kenali "kulit" kubus! Klik tombol unsur untuk melihat letaknya, atau
+            buka jaring-jaringnya.
+          </p>
+        </div>
+
+        <div class="canvas-wrapper">
+          <div id="unsur-canvas" class="canvas-3d"></div>
+          <button id="btn-animasi" class="btn-action">
+            Buka Jaring-jaring
+          </button>
+        </div>
+
+        <div class="interactive-legend">
+          <button class="legend-item" id="btn-sisi">
+            <span class="dot icon-sisi"></span> SISI
+          </button>
+          <button class="legend-item" id="btn-rusuk">
+            <span class="dot icon-rusuk"></span> RUSUK
+          </button>
+          <button class="legend-item" id="btn-titik">
+            <span class="dot icon-titik"></span> TITIK SUDUT
+          </button>
+        </div>
+
+        <div id="dynamic-explanation" class="theory-box">
+          <h3 id="exp-title">Pilih Unsur Kubus</h3>
+          <p id="exp-desc">
+            Pilih tombol di atas untuk melihat penjelasan lengkapnya di sini.
+          </p>
+        </div>
+
+        <div class="quiz-panel">
+          <h3>Kuis Pemahaman Unsur</h3>
+          <div class="input-row">
+            <div class="input-group">
+              <label>Jumlah Sisi</label>
+              <input type="number" id="kuis-sisi" placeholder="0" />
+            </div>
+            <div class="input-group">
+              <label>Jumlah Rusuk</label>
+              <input type="number" id="kuis-rusuk" placeholder="0" />
+            </div>
+            <div class="input-group">
+              <label>Titik Sudut</label>
+              <input type="number" id="kuis-titik" placeholder="0" />
+            </div>
+          </div>
+          <button id="btn-kuis" class="btn-action btn-full">
+            Cek Pemahaman
+          </button>
+          <div id="kuis-feedback" class="feedback-msg hidden"></div>
+        </div>
+      </section>
+
+      <section class="card section-container volume-section">
+        <div class="section-header">
+          <h2>2. Konsep Volume Kubus</h2>
+          <p>
+            Volume adalah "isi" atau kapasitas. Mari kita isi kerangka kubus ini
+            dengan tumpukan kubus satuan!
+          </p>
+        </div>
+
+        <div class="canvas-wrapper">
+          <div id="volume-canvas" class="canvas-3d"></div>
+          <div class="controls-overlay">
+            <label>Ukuran Rusuk (s): <span id="val-s">3</span></label>
+            <input type="range" id="slider-s" min="1" max="5" value="3" />
+          </div>
+        </div>
+
+        <div class="action-grid">
+          <button id="btn-vol-lantai" class="btn-secondary">
+            1. Susun Lantai Dasar
+          </button>
+          <button id="btn-vol-penuh" class="btn-secondary">
+            2. Tumpuk Penuh
+          </button>
+          <button id="btn-vol-reset" class="btn-danger">Kosongkan</button>
+        </div>
+
+        <div class="theory-box math-panel">
+          <h3>Analisis Perhitungan Volume:</h3>
+          <div id="volume-math-text">
+            Tentukan ukuran rusuk lalu klik tombol di atas untuk melihat
+            perhitungan rumus.
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-container lp-section">
+        <div class="section-header">
+          <h2>3. Konsep Luas Permukaan Kubus</h2>
+          <p>
+            Berapa banyak bahan pelapis yang dibutuhkan untuk membungkus kubus
+            ini? Mari kita buka jaring-jaringnya!
+          </p>
+        </div>
+
+        <div class="canvas-wrapper">
+          <div id="lp-canvas" class="canvas-3d"></div>
+          <div class="controls-overlay">
+            <label>Ukuran Rusuk (s): <span id="val-lp">3</span></label>
+            <input type="range" id="slider-lp" min="1" max="5" value="3" />
+          </div>
+          <button id="btn-animasi-lp" class="btn-action">
+            Buka Jaring-jaring
+          </button>
+        </div>
+
+        <div class="theory-box math-panel">
+          <h3>Analisis Perhitungan Luas Permukaan:</h3>
+          <div id="lp-math-text">
+            <p>Geser ukuran rusuk di atas untuk melihat perubahannya.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-container practice-section">
+        <div class="section-header">
+          <h2>4. Latihan Mandiri</h2>
+          <p>
+            Buktikan pemahamanmu! Tentukan sendiri ukuran rusuknya dan hitung
+            jawabannya.
+          </p>
+        </div>
+
+        <div class="practice-form">
+          <div class="input-group wide">
+            <label>Panjang Rusuk (s) yang kamu inginkan:</label>
+            <input
+              type="number"
+              id="latihan-s"
+              placeholder="Contoh: 10"
+              min="1"
+            />
+          </div>
+          <div class="input-group wide">
+            <label>Berapa Volume kubusnya?</label>
+            <input
+              type="number"
+              id="latihan-v"
+              placeholder="Hasil perhitungan Volume"
+            />
+          </div>
+          <div class="input-group wide">
+            <label>Berapa Luas Permukaannya?</label>
+            <input
+              type="number"
+              id="latihan-lp"
+              placeholder="Hasil perhitungan Luas Permukaan"
+            />
+          </div>
+          <button id="btn-latihan" class="btn-action btn-full">
+            Cek Langkah Penyelesaian
+          </button>
+        </div>
+
+        <div id="latihan-feedback" class="feedback-msg hidden">
+          <div id="latihan-status" class="status-banner"></div>
+          <div class="step-by-step">
+            <h4>Pembahasan:</h4>
+            <p>
+              <strong>Diketahui:</strong><br />Panjang rusuk (s) =
+              <span id="ans-s">-</span>
+            </p>
+            <p>
+              <strong>Ditanya:</strong><br />Volume (V) dan Luas Permukaan (LP)?
+            </p>
+            <p>
+              <strong>Jawab (Volume):</strong><br />
+              V = s &times; s &times; s <br />
+              V = <span id="ans-s1">-</span> &times;
+              <span id="ans-s2">-</span> &times; <span id="ans-s3">-</span> =
+              <strong><span id="ans-v">-</span></strong>
+            </p>
+            <p>
+              <strong>Jawab (Luas Permukaan):</strong><br />
+              LP = 6 &times; (s &times; s) <br />
+              LP = 6 &times; (<span id="ans-s4">-</span> &times;
+              <span id="ans-s5">-</span>) <br />
+              LP = 6 &times; <span id="ans-lsisi">-</span> =
+              <strong><span id="ans-lp">-</span></strong>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Pendidikan Matematika UNNES - Deafit Ridho Nugroho</p>
+    </footer>
+
+    <script src="kubus-balok.js"></script>
+  </body>
+</html>

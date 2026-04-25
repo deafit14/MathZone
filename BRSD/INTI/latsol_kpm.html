@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tes Pemecahan Masalah - Zona Matematika</title>
+    <link rel="stylesheet" href="latsol_kpm.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container text-center">
+        <h1>ZONA MATEMATIKA</h1>
+        <p class="subtitle">Tes Kemampuan Pemecahan Masalah (KPM)</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card petunjuk-card">
+        <h2>📋 Tata Cara Pengerjaan</h2>
+        <ol>
+          <li>
+            Tulislah <strong>Nama, Nomor Absen, dan Kelas</strong> pada sudut
+            kanan atas selembar kertas.
+          </li>
+          <li>
+            Kerjakan soal di bawah ini secara berurutan pada kertas tersebut
+            secara individu.
+          </li>
+          <li>
+            Untuk setiap soal, <strong>WAJIB</strong> menuliskan
+            <em>Diketahui, Ditanya, dan Strategi/Jawab</em> secara runtut.
+          </li>
+          <li>Tes ini bersifat <em>closed book</em> (tidak membuka buku).</li>
+          <li>
+            Gunakan visual 3D pada layar untuk membantumu membayangkan bentuk
+            bangun ruangnya (bisa diputar/digeser).
+          </li>
+          <li>
+            Jika sudah selesai, foto kertas jawabanmu lalu kirimkan melalui
+            tautan berikut:<br />
+            <a
+              href="https://drive.google.com/drive/folders/1KPYCObh9v32k_8iCo5TWAXUYwzpcRtU5?usp=sharing"
+              target="_blank"
+              class="btn-upload"
+              >Upload Jawaban "Di Sini"</a
+            >
+          </li>
+        </ol>
+        <p
+          class="text-center"
+          style="margin-top: 20px; font-weight: 600; color: #2d935d"
+        >
+          Selamat Mengerjakan, Jangan Lupa Berdoa!
+        </p>
+      </section>
+
+      <section class="card soal-card">
+        <div class="soal-header">
+          <span class="soal-nomor">Soal 1</span>
+          <span class="soal-topik">Brownies Lumer Siti</span>
+        </div>
+
+        <p>
+          Siti bermaksud membuka usaha kuliner "Brownies Lumer". Ia membutuhkan
+          dua jenis kardus kemasan untuk menyesuaikan pesanan pelanggan. Kemasan
+          pertama berbentuk <strong>kubus</strong> dengan panjang rusuk
+          <strong>15 cm</strong>. Kemasan kedua berbentuk
+          <strong>balok</strong> dengan ukuran panjang <strong>20 cm</strong>,
+          lebar <strong>10 cm</strong>, dan tinggi <strong>12 cm</strong>.
+        </p>
+        <p>
+          Untuk menekan biaya produksi, Siti membeli lembaran karton besar
+          berukuran <strong>80 cm × 80 cm</strong> seharga Rp8.000,00 per lembar
+          yang akan ia lipat sendiri menjadi kardus.
+        </p>
+
+        <div class="canvas-wrapper">
+          <div id="canvas-soal1" class="canvas-3d"></div>
+          <div class="canvas-caption">
+            Visualisasi Kardus (Bisa diputar/digeser)
+          </div>
+        </div>
+
+        <div class="pertanyaan-list">
+          <p><strong>Pertanyaan:</strong></p>
+          <ol type="a">
+            <li>
+              Hitunglah luas permukaan karton yang dibutuhkan untuk membuat satu
+              kemasan berbentuk kubus dan satu kemasan berbentuk balok. Jika
+              Siti saat ini hanya memiliki satu lembaran karton, apakah bahan
+              tersebut cukup untuk membuat kedua jenis kemasan tersebut?
+              Tunjukkan perhitungannya!
+            </li>
+            <li>
+              Seorang pelanggan ingin memesan varian brownies spesial dan
+              meminta kemasan yang memiliki kapasitas ruang (volume) paling
+              besar agar bisa diisi dengan lebih banyak
+              <em>topping</em> cokelat. Kemasan mana yang harus dipilih
+              pelanggan? Tunjukkan alasannya secara matematis!
+            </li>
+            <li>
+              Menjelang hari raya, Siti menerima pesanan untuk membuat 50 buah
+              kemasan berbentuk balok. Berapakah biaya minimal yang harus
+              dikeluarkan Siti khusus untuk membeli lembaran karton besar?
+              Tunjukkan perhitungannya!
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="card soal-card">
+        <div class="soal-header">
+          <span class="soal-nomor">Soal 2</span>
+          <span class="soal-topik">Pameran "Go Green"</span>
+        </div>
+
+        <p>
+          Dalam rangka pameran karya seni "Go Green" di sekolah, panitia siswa
+          ingin memamerkan kerajinan daur ulang di dalam kotak pajangan
+          (<em>display</em>) transparan dari bahan akrilik. Kotak pajangan ini
+          didesain berbentuk
+          <strong>balok tanpa alas penutup bawah</strong> (sehingga hanya
+          menutupi bagian atas dan sisi samping karya seni).
+        </p>
+        <p>
+          Panitia merencanakan ukuran setiap kotak pajangan tersebut memiliki
+          panjang <strong>30 cm</strong>, lebar <strong>20 cm</strong>, dan
+          tinggi <strong>25 cm</strong>.
+        </p>
+
+        <div class="canvas-wrapper">
+          <div id="canvas-soal2" class="canvas-3d"></div>
+          <div class="canvas-caption">
+            Visualisasi Akrilik Tanpa Alas (Bisa diputar ke bawah untuk melihat
+            lubangnya)
+          </div>
+        </div>
+
+        <div class="pertanyaan-list">
+          <p><strong>Pertanyaan:</strong></p>
+          <ol type="a">
+            <li>
+              Jika panitia pameran akan memesan sebanyak 40 buah kotak pajangan
+              akrilik (tanpa alas penutup bawah), berapa luas akrilik paling
+              sedikit yang diperlukan untuk seluruh kotak tersebut? Tunjukkan
+              perhitungannya!
+            </li>
+            <li>
+              Harga lembaran akrilik bening di pasaran adalah Rp 200.000 per m²
+              (ingat: 1 m² = 10.000 cm²). Sementara itu, biaya jasa potong dan
+              lem untuk membuat 1 buah kotak pajangan adalah Rp 8.000. Berapakah
+              total biaya keseluruhan yang harus disiapkan oleh panitia untuk
+              mewujudkan kotak pajangan tersebut? Tunjukkan perhitungannya!
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Pendidikan Matematika UNNES - Deafit Ridho Nugroho</p>
+    </footer>
+
+    <script src="latsol_kpm.js"></script>
+  </body>
+</html>
